@@ -177,6 +177,11 @@ app_license = "mit"
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "almoosa_customization.event.get_events"
 # }
+override_whitelisted_methods = {
+    "erpnext.stock.utils.scan_barcode":
+        "almoosa_customization.api.scan_barcode"
+}
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
@@ -241,4 +246,76 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
+fixtures = [
+    # Custom Fields created by this app
+    {
+        "dt": "Custom Field",
+        "filters": [
+            ["module", "=", "Almoosa Customization"]
+        ]
+    },
 
+    # Client Scripts
+    {
+        "dt": "Client Script",
+        "filters": [
+            ["module", "=", "Almoosa Customization"]
+        ]
+    },
+
+    # Server Scripts
+    {
+        "dt": "Server Script",
+        "filters": [
+            ["module", "=", "Almoosa Customization"]
+        ]
+    },
+
+    # Property Setters
+    {
+        "dt": "Property Setter",
+        "filters": [
+            ["module", "=", "Almoosa Customization"]
+        ]
+    },
+
+    # Custom DocTypes (if any)
+    {
+        "dt": "DocType",
+        "filters": [
+            ["custom", "=", 1]
+        ]
+    },
+
+    # Print Formats
+    {
+        "dt": "Print Format",
+        "filters": [
+            ["module", "=", "Almoosa Customization"]
+        ]
+    }
+
+    # # Workflows
+    # {
+    #     "dt": "Workflow",
+    #     "filters": [
+    #         ["module", "=", "Almoosa Customization"]
+    #     ]
+    # },
+
+    # # Workflow States
+    # {
+    #     "dt": "Workflow State",
+    #     "filters": [
+    #         ["module", "=", "Almoosa Customization"]
+    #     ]
+    # },
+
+    # # Workflow Actions
+    # {
+    #     "dt": "Workflow Action",
+    #     "filters": [
+    #         ["module", "=", "Almoosa Customization"]
+    #     ]
+    # }
+]
