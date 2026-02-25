@@ -1,0 +1,21 @@
+[
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Save",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2026-02-14 16:15:46.102540",
+  "module": "Almoosa Customization",
+  "name": "Fill Size and Color Material Request",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": "Material Request Item",
+  "script": "frappe.logger().info(f\"[MR ITEM] Script triggered for item {doc.item_code}\")\n\nif doc.item_code:\n    result = frappe.call(\n        \"almoosa_customization.api.get_item_attributes\",\n        item_code=doc.item_code\n    )\n\n    attrs = result.get(\"message\") if result else None\n\n    frappe.logger().info(f\"[MR ITEM] Extracted attrs: {attrs}\")\n\n    if attrs:\n        doc.custom_color = attrs.get(\"color\")\n        doc.custom_size = attrs.get(\"size\")",
+  "script_type": "DocType Event"
+ }
+]
